@@ -1,0 +1,23 @@
+{{diagnostic}}
+<div class="form-group">
+  <label for="id">Name</label>
+  <input type="number" class="form-control" id="name"
+         required
+         [(ngModel)]="model.id" name="name">
+</div>
+
+<div class="form-group">
+  <label for="available">Available</label>
+  <mat-checkbox [(ngModel)] = "model.available" name = "available"></mat-checkbox>
+</div>
+
+<div class="form-group">
+  <label for="location">Location</label>
+  <select class="form-control"  id="location"
+          required
+          [(ngModel)]="model.location" name="location">
+    <option *ngFor="let loc of locations" [value]="loc">{{loc}}</option>
+  </select>
+
+  <button type="submit" class="btn btn-success" (click)="onSubmit()">Submit</button>
+</div>
