@@ -1,19 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatCheckboxModule } from '@angular/material/';
+import { MatCheckboxModule, MatFormFieldModule } from '@angular/material/';
 import { AppComponent } from './app.component';
-import { HeroFormComponent } from './forms/equipment-form/equipment-form.component';
-import { FormsModule } from '@angular/forms';
-
+import { EquipmentFormComponent } from './forms/equipment-form/equipment-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    HeroFormComponent
+    EquipmentFormComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    MatCheckboxModule
+    FormsModule, ReactiveFormsModule,
+    MatCheckboxModule, MatFormFieldModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

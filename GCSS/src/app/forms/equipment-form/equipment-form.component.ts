@@ -1,24 +1,24 @@
 import { Component } from '@angular/core';
 import { Equipment } from 'src/app/equipment';
-
+import { HttpClient } from '@angular/common/http';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-equipment-form',
   templateUrl: './equipment-form.component.html',
   styleUrls: ['./equipment-form.component.css']
 })
-export class HeroFormComponent {
+export class EquipmentFormComponent {
 
-  locations = ['One', 'Two',
-            'Three', 'Four'];
-
-  model = new Equipment(18, true, this.locations[0]);
+  locations = [0, 1, 2, 3];
+  public form: Equipment = new Equipment();
   submitted = false;
 
-  // TODO: POST
-  onSubmit() { this.submitted = true;
-  console.log('Submitted'); }
+  constructor(private http: HttpClient) {
+  }
 
-  // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.model); }
+  onSubmit() { this.submitted = true;
+    this.http.post<any>('http://localhost:5000/equipment', this.form.value)
+            .toPromise();
+  console.log('Submitted'); }
 }
